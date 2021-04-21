@@ -10,9 +10,9 @@ Board::Board(Graphics & gfx)
 void Board::DrawCell(const Location & loc, Color c)
 {
 	assert(loc.x >= 0);
-	assert(loc.x < width);
+	assert(loc.x < loc.x + width);
 	assert(loc.y >= 0);
-	assert(loc.y < height);
+	assert(loc.y < loc.y + height);
 	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension, dimension, dimension, c);
 }
 

@@ -26,7 +26,8 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	brd(gfx),
-	rng( std::random_device()() )
+	rng( std::random_device()() ),
+	snake(loc = { 0,0 })
 {
 }
 
@@ -40,10 +41,33 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		vx = -1;
+		vy = 0;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		vx = 1;
+		vy = 0;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		vy = -1;
+		vx = 0;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		vy = 1;
+		vx = 0;
+	}
+
+	snake.MoveBy(loc = {vx, vy});
 }
 
 void Game::ComposeFrame()
 {
+	/*
 	std::uniform_int_distribution<int> colorDist(0, 255);
 	for (int y = 0; y < brd.GetGridHeight(); ++y)
 	{  
@@ -54,4 +78,7 @@ void Game::ComposeFrame()
 			brd.DrawCell(loc, c);
 		}
 	}
+	*/
+	snake.Draw(brd);
+
 }
