@@ -28,7 +28,7 @@ Game::Game(MainWindow& wnd)
 	brd(gfx),
 	rng( std::random_device()() ),
 	snake(loc = { 0,0 })
-{
+{	//jalköfjlksafjasldfjasdjflksfljefjsofja
 }
 
 void Game::Go()
